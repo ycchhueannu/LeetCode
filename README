@@ -1,0 +1,10 @@
+personal implementation in LeetCode with python3.
+
+Note that some style might not be 'pythonic', 
+the main reason is I want to speed up run time,
+e.g. max() runs a lot slower than updating attr.
+using if-statement; some may be 'too pythonic', 
+using lots of map, reduce, filter, lambda, etc.
+which may lost readability, since I want to ex-
+pose myself to these functions, or for the 
+potential speed-up.
