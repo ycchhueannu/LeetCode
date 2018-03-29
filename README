@@ -1,5 +1,9 @@
 personal implementation in LeetCode with python3.
 
+ps. some answer may not meet the criteria of Leet-
+Code, the main reason is I am too lazy to think
+of the standard solution that it want us to do.
+
 Note that some style might not be 'pythonic', 
 the main reason is I want to speed up run time,
 e.g. max() runs a lot slower than updating attr.
