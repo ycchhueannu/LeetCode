@@ -1,15 +1,8 @@
-personal implementation in LeetCode (language
-are python (version 3) and c++.
+personal implementation in LeetCode (languages are python (version 3) and c++.
 
-ps. some answer may not meet the criteria of Leet-
-Code, the main reason is I am too lazy to think
-of the standard solution that it want us to do.
+ps. some answer may not meet the criteria of LeetCode, the main reason is I am too lazy to think of the standard solution that it want us to do.
 
-Note that some style might not be 'pythonic', 
-the main reason is I want to speed up run time,
-e.g. max() runs a lot slower than updating attr.
-using if-statement; some may be 'too pythonic', 
-using lots of map, reduce, filter, lambda, etc.
-which may lost readability, since I want to ex-
-pose myself to these functions, or for the 
-potential speed-up.
+Note that some style might not be 'pythonic', the main reason is I want to
+speed up run time, e.g. max() runs a lot slower than updating attributes
+using if-statement; some may be 'too pythonic', using lots of map, reduce,
+filter, lambda, etc., which may lost readability, since I want to expose myself to these functions, or for the potential speed-up.
