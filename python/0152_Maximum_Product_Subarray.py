@@ -1,7 +1,42 @@
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
+        def no_pos_and_between_neg_is_zero(nums):
+            for i in range(0, len(nums)):
+                if nums[i] > 0:
+                    return False
+                elif nums[i] < 0:
+                    if i != 0 and i != len(nums)-1 and (nums[i-1] != 0 or nums[i+1] != 0):
+                        return False
+                    elif i == 0 and nums[i+1] != 0:
+                        return False
+                    elif i == len(nums)-1 and nums[i-1] != 0:
+                        return False
+            return True
+        if len(nums) == 1:
+            return nums[0]
+        if all(n == 0 for n in nums):
+            return 0
+        elif no_pos_and_between_neg_is_zero(nums):
+            return 0
+        cur_max = 1
+        max_num = 1
+        min_num = 1
+        for n in nums:
+            if n == 0:
+                max_num = 1
+                min_num = 1
+            elif n > 0:
+                max_num *= n
+                min_num = min(min_num*n, 1)
+            else:
+                tmp_max = max_num
+                max_num = max(min_num*n, 1)
+                min_num = tmp_max*n
+            cur_max = max(cur_max, max_num)
+        return cur_max
+        """
+        # version 2, I came up with this solution but looked messy
         def compute_product(sublist, num_minus):
-            # has n number of "-", can use "n-1" minus operation 
             update_cur_product = lambda x, y: x * y if x != -float("inf") else y
             ret = -float("inf")
             cur_product = -float("inf")
@@ -19,10 +54,6 @@ class Solution:
             return max(ret, cur_product)
 
         def max_left_right_product(sublist, num_minus):
-            # if sublist = [2, -3, -2, -4], which has 3 negative numbers,
-            # we can use 2 (even) negative number to make the product 
-            # positive, and hence the maximum number can either be
-            # [2, -3, -2] (from the left) or [-2, -4] (from the right)
             max_left_product = compute_product(sublist, num_minus)
             max_right_product = compute_product(sublist[::-1], num_minus)
             return max(max_left_product, max_right_product)
@@ -37,7 +68,7 @@ class Solution:
                 ret = max(ret, *sublist, max_left_right_product(sublist, num_minus))
             return ret
 
-        """ code starts here """
+        # the code starts here
         ret = -float("inf")
         sublist = []
         num_minus = 0
@@ -60,7 +91,8 @@ class Solution:
         
         return ret
         """
-        # this DP method will MLE
+        """
+        # version 1, this DP method will MLE
         n = len(nums)
         dp = [[1] * n for _ in range(n)]
         ret = max(nums)
